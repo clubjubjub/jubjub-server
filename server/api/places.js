@@ -13,7 +13,13 @@ router.get('/recent', async (req, res, next) => {
 })
 
 router.get('/nearby/:lat/:lng', async (req, res, next) => {
+  console.log('in route')
   try {
+    console.log(`
+
+      req.params.lat: ${req.params.lat}
+
+    `)
     const { data } = await axios.get(
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
         req.params.lat
