@@ -1,4 +1,4 @@
-const { User, Portfolio, Transaction } = require('./server/db/models')
+const { User } = require('./server/db/models')
 const db = require('./server/db/db')
 const { green, red } = require('chalk')
 
