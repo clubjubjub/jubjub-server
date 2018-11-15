@@ -24,7 +24,7 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
         req.params.lat
       }
-      },${req.params.lng}&rankby=distance&key=${process.env.GOOGLE_PLACES}`
+      ,${req.params.lng}&rankby=distance&key=${process.env.GOOGLE_PLACES}`
     )
     res.json(data)
   } catch (err) {
