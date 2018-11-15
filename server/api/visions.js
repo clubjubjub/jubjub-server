@@ -8,7 +8,7 @@ router.post('/', async (req, res, next) => {
   console.log(`
 
     Inside the visions route:
-    ${req.body.body}
+    ${req}
 
   `)
   try {
