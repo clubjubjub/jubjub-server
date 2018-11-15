@@ -12,16 +12,11 @@ router.post('/', async (req, res, next) => {
 
   `)
   try {
-    const { data } = await fetch(
+    const { data } = await axios.post(
       `https://vision.googleapis.com/v1/images:annotate?key=${
         process.env.GOOGLE_VISION
       }`,
       {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
         body: req.body
       }
     )
