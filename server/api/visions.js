@@ -12,12 +12,26 @@ router.post('/', async (req, res, next) => {
 
   `)
   try {
-    const { data } = await axios.post(
+    const { data } = await fetch(
       `https://vision.googleapis.com/v1/images:annotate?key=${
         process.env.GOOGLE_VISION
       }`,
-      req.body
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: req.body
+      }
     )
+
+    // const { data } = await axios.post(
+    //   `https://vision.googleapis.com/v1/images:annotate?key=${
+    //     process.env.GOOGLE_VISION
+    //   }`,
+    //   req.body
+    // )
     res.json(data)
   } catch (err) {
     next(err)
