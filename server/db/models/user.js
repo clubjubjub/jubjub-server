@@ -34,13 +34,6 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
-  },
-  riskLevel: {
-    type: Sequelize.INTEGER,
-    validate: {
-      min: 0,
-      max: 100
-    }
   }
 })
 
