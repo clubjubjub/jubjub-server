@@ -1,0 +1,30 @@
+{
+  "name": "jubjub-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "seed": "node seed.js",
+    "start:dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.4.1",
+    "compression": "^1.7.3",
+    "connect-session-sequelize": "^6.0.0",
+    "crypto": "^1.0.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "pg": "^7.6.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.41.2",
+    "volleyball": "^1.5.1"
+  }
+}
