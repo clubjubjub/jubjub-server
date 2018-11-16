@@ -79,8 +79,8 @@ passport.deserializeUser(async (id, done) => {
 app.use(volleyball)
 
 // body parsing middleware
-app.use(express.json({ limit: '100mb' }))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true, limit: '100mb' }))
 // session middleware with passport
 app.use(
   session({
