@@ -17,6 +17,14 @@ const app = express()
 
 if (process.env.NODE_ENV !== 'production') require('../secrets.js')
 
+// var AWS = require('aws-sdk');
+// var s3 = new AWS.S3({accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY, region:'REGION'});
+
+// var params = {Bucket: 'test-bucket-tutorial', Key: 'images/myimage.jpg', ContentType: 'image/jpeg'};
+// s3.getSignedUrl('putObject', params, function (err, url) {
+//     console.log('Your generated pre-signed URL is', url);
+// });
+
 // AWS.config.update({
 //   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 //   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
@@ -71,7 +79,7 @@ passport.deserializeUser(async (id, done) => {
 app.use(volleyball)
 
 // body parsing middleware
-app.use(express.json())
+app.use(express.json({ limit: '100mb' }))
 app.use(express.urlencoded({ extended: true }))
 // session middleware with passport
 app.use(
