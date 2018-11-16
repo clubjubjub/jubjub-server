@@ -26,5 +26,12 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.41.2",
     "volleyball": "^1.5.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.357.0",
+    "bluebird": "^3.5.3",
+    "file-type": "^10.4.0",
+    "fs": "0.0.1-security",
+    "multiparty": "^4.2.1"
   }
 }
