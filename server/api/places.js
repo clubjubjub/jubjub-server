@@ -13,18 +13,14 @@ router.get('/recent', async (req, res, next) => {
 })
 
 router.get('/nearby/:lat/:lng', async (req, res, next) => {
-  console.log('in route')
   try {
-    console.log(`
-
-      req.params.lat: ${req.params.lat}
-
-    `)
     const { data } = await axios.get(
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
         req.params.lat
       }
-      ,${req.params.lng}&rankby=distance&key=${process.env.GOOGLE_PLACES}`
+      ,${req.params.lng}&rankby=distance&type=restaurant&key=${
+        process.env.GOOGLE_PLACES
+      }`
     )
     res.json(data)
   } catch (err) {
