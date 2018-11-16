@@ -4,7 +4,7 @@ module.exports = router
 
 //https://vision.googleapis.com/v1/images:annotate?key=${key}`
 
-router.post('/', async (req, res, next) => {
+router.post('/:img', async (req, res, next) => {
   console.log(`
 
     Inside the visions route:
@@ -17,7 +17,7 @@ router.post('/', async (req, res, next) => {
         process.env.GOOGLE_VISION
       }`,
 
-      req.body
+      req.params.img
     )
 
     // const { data } = await axios.post(
