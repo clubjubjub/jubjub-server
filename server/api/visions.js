@@ -27,6 +27,7 @@ router.post('/', async (req, res, next) => {
     //   }`,
     //   req.body
     // )
+    console.log('DATA: ', data)
     res.json(data)
   } catch (err) {
     next(err)
