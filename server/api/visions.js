@@ -8,7 +8,7 @@ router.post('/', async (req, res, next) => {
   console.log(`
 
     Inside the visions route:
-    ${req}
+    ${req.body}
 
   `)
   try {
@@ -16,9 +16,8 @@ router.post('/', async (req, res, next) => {
       `https://vision.googleapis.com/v1/images:annotate?key=${
         process.env.GOOGLE_VISION
       }`,
-      {
-        body: req.body
-      }
+
+      req.body
     )
 
     // const { data } = await axios.post(
