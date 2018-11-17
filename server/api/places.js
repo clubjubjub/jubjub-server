@@ -33,6 +33,7 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
     //   ,${req.params.lng}&rankby=distance&type=restaurant&key=${
     //     process.env.GOOGLE_PLACES
     //   }`
+
     // )
     console.log('THIS IS THE DATA', data)
     res.json(data)
