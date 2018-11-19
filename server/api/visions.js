@@ -39,10 +39,19 @@ router.post('/', async (req, res, next) => {
   console.log(`
 
     Inside the visions route:
-    ${req.body}
+
+    Req.body: ${JSON.parse(req.body)}
+
+    Req.body.photoUri: ${JSON.parse(req.body.photoUri)}
 
   `)
-  res.json({ brrp: 'brrrrp' })
+
+  try {
+    res.send(`Received your POST request. You sent: ${req.body.photoUri}`)
+  } catch (err) {
+    next(err)
+  }
+  // res.json({ brrp: 'brrrrp' })
   /**
   try {
     const { data } = await axios.post(      `https://vision.googleapis.com/v1/images:annotate?key=${
