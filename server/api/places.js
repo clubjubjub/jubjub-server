@@ -1,9 +1,11 @@
 const router = require('express').Router()
-const { Place } = require('../db/models')
 const axios = require('axios')
-const yelpKey = process.env.YELP_BUSINESS_SEARCH
-
+const { Place } = require('../db/models')
 module.exports = router
+
+const yelpConfig = {
+  key: process.env.YELP_BUSINESS_SEARCH
+}
 
 router.get('/recent', async (req, res, next) => {
   try {
@@ -22,21 +24,29 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
       }&longitude=${req.params.lng}&sort_by=distance`,
       {
         headers: {
-          Authorization: `Bearer ${yelpKey}`
+          Authorization: `Bearer ${yelpConfig.key}`
         }
       }
     )
-    // const { data } = await axios.get(
-    //   `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
-    //     req.params.lat
-    //   }
-    //   ,${req.params.lng}&rankby=distance&type=restaurant&key=${
-    //     process.env.GOOGLE_PLACES
-    //   }`
-    // )
-    console.log('THIS IS THE DATA', data)
     res.json(data)
   } catch (err) {
     next(err)
   }
 })
+
+/** Route for Google Places API: */
+// router.get('/nearby/:lat/:lng', async (req, res, next) => {
+//   try {
+//     const { data } = await axios.get(
+//       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${
+//         req.params.lat
+//       }
+//       ,${req.params.lng}&rankby=distance&type=restaurant&key=${
+//         process.env.GOOGLE_PLACES
+//       }`
+//     )
+//     res.json(data)
+//   } catch (err) {
+//     next(err)
+//   }
+// })

@@ -2,8 +2,6 @@ const router = require('express').Router()
 const axios = require('axios')
 module.exports = router
 
-//https://vision.googleapis.com/v1/images:annotate?key=${key}`
-
 router.post('/', async (req, res, next) => {
   console.log(`
 

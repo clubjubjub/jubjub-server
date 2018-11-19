@@ -196,7 +196,13 @@ const seed = async () => {
     ])
   ])
 
-  console.log(green('Seeding success!'))
+  console.log(
+    green(`
+
+      Seeding success!
+
+    `)
+  )
   db.close()
 }
 
