@@ -20,6 +20,9 @@ const Place = db.define('place', {
   rating: {
     type: Sequelize.DECIMAL
   },
+  phone: {
+    type: Sequelize.STRING
+  },
   addressOne: {
     type: Sequelize.TEXT
   },
