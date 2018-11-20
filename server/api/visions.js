@@ -1,10 +1,42 @@
 const router = require('express').Router()
 const axios = require('axios')
+const path = require('path')
+const fs = require('fs')
+const multer = require('multer')
 module.exports = router
 
 const visionConfig = {
   key: process.env.GOOGLE_VISION
 }
+
+let upload = multer()
+
+router.post('/upload', upload.array(), async (req, res, next) => {
+  try {
+    const base64Data = req.body.uri
+    console.log(`Writing file... ${base64Data}`)
+    fs.writeFile(
+      path.join(__dirname, '..', '..', 'public', req.body.name),
+      base64Data,
+      'base64',
+      function(err) {
+        if (err) console.log(err)
+        fs.readFile(
+          path.join(__dirname, '..', '..', 'public', req.body.name, function(
+            error,
+            data
+          ) {
+            if (error) throw error
+            console.log('reading file...', data.toString('base64'))
+            res.send(data)
+          })
+        )
+      }
+    )
+  } catch (err) {
+    next(err)
+  }
+})
 
 // router.post('/', async (req, res, next) => {
 //   try {

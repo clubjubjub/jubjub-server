@@ -28,8 +28,8 @@ passport.deserializeUser(async (id, done) => {
 })
 
 const createApp = () => {
-  app.use(morgan('dev'))
   app.use(cors())
+  app.use(morgan('dev'))
   app.use(express.json({ limit: '50mb ' })) // limit for images
   app.use(express.urlencoded({ extended: true }))
   app.use(compression())
@@ -49,6 +49,8 @@ const createApp = () => {
 
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
+
+  app.use(express.static(path.join(__dirname, '..', 'public')))
 
   app.use((err, req, res, next) => {
     console.error(err.stack)
