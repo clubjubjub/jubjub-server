@@ -11,6 +11,14 @@ const visionConfig = {
 }
 
 router.post('/', async (req, res, next) => {
+  console.log(`
+
+    Inside /api/visions route with post request:
+
+    ${req.body}
+
+
+  `)
   try {
     const client = new vision.ImageAnnotatorClient()
     const blob = req.body.base64
