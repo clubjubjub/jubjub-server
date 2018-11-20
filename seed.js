@@ -67,6 +67,12 @@ const seed = async () => {
         lastName: 'Domegan',
         email: 'kdomegan9@homestead.com',
         password: 'puL1ofuYO'
+      },
+      {
+        firstName: 'James',
+        lastName: 'Stephens',
+        email: 'brrp@brrp.com',
+        password: '123'
       }
     ])
   ])
