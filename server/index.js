@@ -31,8 +31,8 @@ passport.deserializeUser(async (id, done) => {
 const createApp = () => {
   app.use(cors())
   app.use(morgan('dev'))
-  app.use(express.json({ limit: '5000mb ' })) // limit for images
-  app.use(express.urlencoded({ extended: true }))
+  app.use(express.json({ limit: '100mb' })) // limit for images
+  app.use(express.urlencoded({ extended: true, limit: '100mb' }))
   app.use(compression())
 
   // session middleware with passport
