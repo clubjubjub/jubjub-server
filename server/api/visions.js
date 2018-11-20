@@ -12,6 +12,13 @@ const visionConfig = {
 let upload = multer()
 
 router.post('/upload', upload.array(), async (req, res, next) => {
+  console.log(`
+
+    Vision Upload route
+    req.body.uri: ${req.body.uri}
+    req.body: ${req.body}
+
+  `)
   try {
     const base64Data = req.body.uri
     console.log(`Writing file... ${base64Data}`)
