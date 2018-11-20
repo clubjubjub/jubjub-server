@@ -15,7 +15,9 @@ router.post('/', async (req, res, next) => {
 
     Inside /api/visions route with post request:
 
-    ${req.body}
+    base64: ${req.body.base64}
+
+    photoBlob: ${req.body.photoBlob}
 
 
   `)
