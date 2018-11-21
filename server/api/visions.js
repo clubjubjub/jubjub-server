@@ -10,70 +10,109 @@ const visionConfig = {
   key: process.env.GOOGLE_VISION
 }
 
+function decodeBase64Image(dataString) {
+  const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
+  const response = {}
+
+  if (matches.length !== 3) return new Error('Invalid input')
+
+  response.type = matches[1]
+  response.data = new Buffer.from(matches[2], 'base64')
+
+  return response
+}
+
 router.post('/', async (req, res, next) => {
   console.log(`
 
     Inside /api/visions route with post request:
 
-    base64: ${req.body}
-
   `)
   try {
-    const client = new vision.ImageAnnotatorClient()
-    const blob = req.body.base64
-    let binaryData = new Buffer.from(blob, 'base64').toString('binary')
-    console.log(`
-
-      binaryData: ${binaryData}
-
-    `)
-    await fs.writeFile('out.png', binaryData, 'binary', function(err) {
-      console.log('image error: ', err) // writes out file without error, but it's not a valid image
-    })
-
-    const filename = path.join(__dirname, '../../out.png')
-
-    const [
-      landmarkDectectionResult,
-      webDetectionResult,
-      labelDetectionResult
-    ] = await Promise.all([
-      client.landmarkDetection(filename),
-      client.webDetection(filename),
-      client.labelDetection(filename)
-    ])
-
-    const landmark = landmarkDectectionResult[0].landmarkAnnotations[0]
-
-    var returnObj = {}
-    if (landmark) {
-      returnObj = {
-        name: landmark.description,
-        image: blob,
-        coordinates: [
-          landmark.locations[0].latLng.latitude,
-          landmark.locations[0].latLng.longitude
-        ],
-        accuracy: Number(landmark.score.toFixed(2)),
-        webEntities: webDetectionResult[0].webDetection.webEntities,
-        webImages: webDetectionResult[0].webDetection.visuallySimilarImages,
-        label: labelDetectionResult[0].labelAnnotations[0]
+    const base64Data = req.body.image
+    const imageBuffer = decodeBase64Image(base64Data)
+    const userUploadedFeedMessagesLocation = '../../public/'
+    const userUploadedImagePath =
+      userUploadedFeedMessagesLocation + 'brrrrrp.jpg'
+    require('fs').writeFile(
+      userUploadedImagePath,
+      imageBuffer.data,
+      function() {
+        console.log(
+          'DEBUG - feed:message: Saved to disk image attached by user:',
+          userUploadedImagePath
+        )
       }
-    } else {
-      returnObj = {
-        webEntities: webDetectionResult[0].webDetection.webEntities,
-        webImages: webDetectionResult[0].webDetection.visuallySimilarImages,
-        label: labelDetectionResult[0].labelAnnotations[0]
-      }
-    }
-
-    res.send(returnObj)
-
-    res.end()
+    )
   } catch (err) {
-    next(err)
+    console.log(`Error: ${err}`)
   }
 })
+
+// router.post('/', async (req, res, next) => {
+//   console.log(`
+
+//     Inside /api/visions route with post request:
+
+//     base64: ${req.body}
+
+//   `)
+//   try {
+//     const client = new vision.ImageAnnotatorClient()
+//     const blob = req.body.base64
+//     let binaryData = new Buffer.from(blob, 'base64').toString('binary')
+//     console.log(`
+
+//       binaryData: ${binaryData}
+
+//     `)
+//     await fs.writeFile('out.png', binaryData, 'binary', function(err) {
+//       console.log('image error: ', err) // writes out file without error, but it's not a valid image
+//     })
+
+//     const filename = path.join(__dirname, '../../out.png')
+
+//     const [
+//       landmarkDectectionResult,
+//       webDetectionResult,
+//       labelDetectionResult
+//     ] = await Promise.all([
+//       client.landmarkDetection(filename),
+//       client.webDetection(filename),
+//       client.labelDetection(filename)
+//     ])
+
+//     const landmark = landmarkDectectionResult[0].landmarkAnnotations[0]
+
+//     var returnObj = {}
+//     if (landmark) {
+//       returnObj = {
+//         name: landmark.description,
+//         image: blob,
+//         coordinates: [
+//           landmark.locations[0].latLng.latitude,
+//           landmark.locations[0].latLng.longitude
+//         ],
+//         accuracy: Number(landmark.score.toFixed(2)),
+//         webEntities: webDetectionResult[0].webDetection.webEntities,
+//         webImages: webDetectionResult[0].webDetection.visuallySimilarImages,
+//         label: labelDetectionResult[0].labelAnnotations[0]
+//       }
+//     } else {
+//       returnObj = {
+//         webEntities: webDetectionResult[0].webDetection.webEntities,
+//         webImages: webDetectionResult[0].webDetection.visuallySimilarImages,
+//         label: labelDetectionResult[0].labelAnnotations[0]
+//       }
+//     }
+
+//     res.send(returnObj)
+
+//     res.end()
+//   } catch (err) {
+//     next(err)
+//   }
+// })
 
 // router.post('/upload', upload.array(), async (req, res, next) => {
 //   console.log(`
