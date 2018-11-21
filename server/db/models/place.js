@@ -1,4 +1,3 @@
-const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
@@ -7,13 +6,15 @@ const Place = db.define('place', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  lat: {
+  imageUrl: {
+    type: Sequelize.TEXT
+  },
+  yelpId: {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  lng: {
-    type: Sequelize.TEXT,
-    allowNull: false
+  dateVisited: {
+    type: Sequelize.TEXT
   }
 })
 
