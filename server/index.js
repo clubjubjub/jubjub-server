@@ -54,7 +54,7 @@ const createApp = () => {
       Request received:
 
     `)
-    console.log(req.body)
+    console.log(req.body.photo)
     res.send('image RECEIVEDDDDDDDDDDDDDDd')
   })
 
