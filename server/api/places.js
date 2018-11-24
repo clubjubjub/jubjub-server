@@ -71,7 +71,6 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
   }
 })
 
-
 //GET ==> api/places/recent/:id
 router.get('/recent/:id', async (req, res, next) => {
   try {
