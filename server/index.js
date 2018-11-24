@@ -48,6 +48,16 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  app.post('/upload', async (req, res, next) => {
+    console.log(`
+
+      Request received:
+
+    `)
+    console.log(req.body)
+    res.send('image RECEIVEDDDDDDDDDDDDDDd')
+  })
+
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
