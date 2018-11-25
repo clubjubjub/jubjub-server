@@ -92,7 +92,8 @@ router.get('/recent/:id', async (req, res, next) => {
 
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
-  const userId = 1 //req.user
+  console.log('THE REQ USER: ', req.user)
+  const userId = req.user
   const { name, image_url, id } = req.body
   const date = new Date()
   const dateVisited = date.toString()
