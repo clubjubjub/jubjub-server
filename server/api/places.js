@@ -8,10 +8,11 @@ module.exports = router
 
 //GET --> api/places/recent
 router.get('/recent', async (req, res, next) => {
+  const userId = req.user.id
   try {
     const places = await Place.findAll({
       where: {
-        userId: req.user.id
+        userId
       }
     })
     res.json(places)
@@ -57,7 +58,6 @@ router.get('/recent', async (req, res, next) => {
 // })
 
 router.get('/nearby/:lat/:lng', async (req, res, next) => {
-  console.log('THIS IS THE REQ.USER', req.user)
   try {
     const { data } = await axios.get(
       `https://api.yelp.com/v3/businesses/search?latitude=${
@@ -97,7 +97,6 @@ router.get('/recent/:id', async (req, res, next) => {
 
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
-  console.log('THE REQ USER: ', req.user)
   const userId = req.user.id
   const { name, image_url, id } = req.body
   const date = new Date()
