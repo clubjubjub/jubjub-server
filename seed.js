@@ -92,140 +92,140 @@ const seed = async () => {
       {
         name: 'Feedbug',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 1,
+        yelpId: 't03ZbaLQP3MrMuUGb6MQdw',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Quatz',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 2,
+        yelpId: 'TL-YbRD4L7gIIB2OrL8WKQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Thoughtstorm',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 3,
+        yelpId: 'UMgivwsBSeUe1yXgtsiu9g',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Thoughtbeat',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 4,
+        yelpId: '_XPusO4eMV3L9TiD38I4gw',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Gigazoom',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 5,
+        yelpId: 'FFOfIf3yEy-j2eZadKMo_Q',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Avaveo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 6,
+        yelpId: 'xyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Yacero',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 7,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Fadeo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 8,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Jayo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 9,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Livepath',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 10,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Edgepulse',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 11,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Mybuzz',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 12,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Buzzbean',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 13,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Livetube',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 14,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Roomm',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 15,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Skiba',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 16,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Browsebug',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 17,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Kimia',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 18,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Skibox',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 19,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Tanoodle',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 20,
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       }
