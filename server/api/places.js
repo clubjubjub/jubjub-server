@@ -75,7 +75,7 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
 router.get('/recent/:id', async (req, res, next) => {
   try {
     const { data } = await axios.get(
-      `https://api.yelp.com/v3/businesses/${id}`,
+      `https://api.yelp.com/v3/businesses/${req.params.id}`,
       {
         headers: {
           Authorization: `Bearer ${yelpConfig.key}`
@@ -139,4 +139,3 @@ router.post('/recent', async (req, res, next) => {
 //     next(err)
 //   }
 // })
-

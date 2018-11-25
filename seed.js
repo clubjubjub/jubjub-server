@@ -6,197 +6,227 @@ const seed = async () => {
   await db.sync({ force: true })
 
   // seed your database here!
-  const user = await Promise.all([
-    User.bulkCreate([
-      {
-        firstName: 'Augustine',
-        lastName: 'McPharlain',
-        email: 'amcpharlain0@skype.com',
-        password: 'MSxwZlJCF'
-      },
-      {
-        firstName: 'Sibilla',
-        lastName: 'Bream',
-        email: 'sbream1@wufoo.com',
-        password: 'S1sgs0WQ'
-      },
-      {
-        firstName: 'Cacilie',
-        lastName: 'Wooffinden',
-        email: 'cwooffinden2@hexun.com',
-        password: 'zndRTR'
-      },
-      {
-        firstName: 'Odette',
-        lastName: 'Le Gallo',
-        email: 'olegallo3@cbc.ca',
-        password: 'fEYpQz9yHUV'
-      },
-      {
-        firstName: 'Lamond',
-        lastName: 'Bearfoot',
-        email: 'lbearfoot4@google.es',
-        password: 'yUeoAajvjByP'
-      },
-      {
-        firstName: 'Cordie',
-        lastName: 'Gaines',
-        email: 'cgaines5@vkontakte.ru',
-        password: 'htiW1R9'
-      },
-      {
-        firstName: 'Angil',
-        lastName: 'Beauchamp',
-        email: 'abeauchamp6@list-manage.com',
-        password: 'By2shKJ'
-      },
-      {
-        firstName: 'Lyssa',
-        lastName: 'Prujean',
-        email: 'lprujean7@wsj.com',
-        password: 'iswLowGIhQMt'
-      },
-      {
-        firstName: 'Jaine',
-        lastName: 'Tatnell',
-        email: 'jtatnell8@usatoday.com',
-        password: 'AdrkLvCQ7Ml'
-      },
-      {
-        firstName: 'Kelli',
-        lastName: 'Domegan',
-        email: 'kdomegan9@homestead.com',
-        password: 'puL1ofuYO'
-      },
-      {
-        firstName: 'James',
-        lastName: 'Stephens',
-        email: 'brrp@brrp.com',
-        password: '123'
-      }
-    ])
+  const users = await Promise.all([
+    User.create({
+      firstName: 'James',
+      lastName: 'Stephens',
+      email: 'brrp@brrp.com',
+      password: '123'
+    }),
+    User.create({
+      firstName: 'Loren',
+      lastName: 'Mariquit',
+      email: 'loren@loren.com',
+      password: '123'
+    }),
+    User.create({
+      firstName: 'Tyler',
+      lastName: 'Swartz',
+      email: 'tyler@tyler.com',
+      password: '123'
+    }),
+    User.create({
+      firstName: 'Augustine',
+      lastName: 'McPharlain',
+      email: 'amcpharlain0@skype.com',
+      password: 'MSxwZlJCF'
+    }),
+    User.create({
+      firstName: 'Sibilla',
+      lastName: 'Bream',
+      email: 'sbream1@wufoo.com',
+      password: 'S1sgs0WQ'
+    }),
+    User.create({
+      firstName: 'Cacilie',
+      lastName: 'Wooffinden',
+      email: 'cwooffinden2@hexun.com',
+      password: 'zndRTR'
+    }),
+    User.create({
+      firstName: 'Odette',
+      lastName: 'Le Gallo',
+      email: 'olegallo3@cbc.ca',
+      password: 'fEYpQz9yHUV'
+    }),
+    User.create({
+      firstName: 'Lamond',
+      lastName: 'Bearfoot',
+      email: 'lbearfoot4@google.es',
+      password: 'yUeoAajvjByP'
+    }),
+    User.create({
+      firstName: 'Cordie',
+      lastName: 'Gaines',
+      email: 'cgaines5@vkontakte.ru',
+      password: 'htiW1R9'
+    }),
+    User.create({
+      firstName: 'Angil',
+      lastName: 'Beauchamp',
+      email: 'abeauchamp6@list-manage.com',
+      password: 'By2shKJ'
+    }),
+    User.create({
+      firstName: 'Lyssa',
+      lastName: 'Prujean',
+      email: 'lprujean7@wsj.com',
+      password: 'iswLowGIhQMt'
+    }),
+    User.create({
+      firstName: 'Jaine',
+      lastName: 'Tatnell',
+      email: 'jtatnell8@usatoday.com',
+      password: 'AdrkLvCQ7Ml'
+    }),
+    User.create({
+      firstName: 'Kelli',
+      lastName: 'Domegan',
+      email: 'kdomegan9@homestead.com',
+      password: 'puL1ofuYO'
+    })
   ])
 
   const places = await Promise.all([
     Place.bulkCreate([
       {
-        lat: 52.5687063,
-        lng: 17.2581487,
         name: 'Feedbug',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 1,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 40.0480719,
-        lng: 20.7528378,
         name: 'Quatz',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 2,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: -11.388934,
-        lng: 43.390991,
         name: 'Thoughtstorm',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 3,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 13.034203,
-        lng: 123.449929,
         name: 'Thoughtbeat',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 4,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 39.2762158,
-        lng: -9.2806096,
         name: 'Gigazoom',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 5,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 54.4658152,
-        lng: 19.9348453,
         name: 'Avaveo',
-        userId: 1
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 6,
+        dateVisited: new Date().toString(),
+        userId: 2
       },
       {
-        lat: -34.8411832,
-        lng: -58.4389753,
         name: 'Yacero',
-        userId: 1
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 7,
+        dateVisited: new Date().toString(),
+        userId: 2
       },
       {
-        lat: 3.1035814,
-        lng: 101.640078,
         name: 'Fadeo',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 8,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: '45.85007',
-        lng: '-72.0658',
         name: 'Jayo',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 9,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 61.228665,
-        lng: 14.040054,
         name: 'Livepath',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 10,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: -6.8686728,
-        lng: 107.516493,
         name: 'Edgepulse',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 11,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 59.1280914,
-        lng: 9.6693512,
         name: 'Mybuzz',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 12,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 51.9328106,
-        lng: 21.3032807,
         name: 'Buzzbean',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 13,
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
-        lat: 39.728885,
-        lng: 116.341609,
         name: 'Livetube',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 14,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: -12.182745,
-        lng: -39.2167652,
         name: 'Roomm',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 15,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: 40.824367,
-        lng: 119.837124,
         name: 'Skiba',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 16,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: 45.3612879,
-        lng: 18.693916,
         name: 'Browsebug',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 17,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: 30.66974,
-        lng: 120.79411,
         name: 'Kimia',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 18,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: 1.78925,
-        lng: 99.1089779,
         name: 'Skibox',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 19,
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
-        lat: 38.7554084,
-        lng: -9.3408903,
         name: 'Tanoodle',
+        imageUrl: 'https://picsum.photos/150/150',
+        yelpId: 20,
+        dateVisited: new Date().toString(),
         userId: 2
       }
     ])
