@@ -6,7 +6,7 @@ const seed = async () => {
   await db.sync({ force: true })
 
   // seed your database here!
-  const user = await Promise.all([
+  const users = await Promise.all([
     User.create({
       firstName: 'James',
       lastName: 'Stephens',
