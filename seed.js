@@ -127,26 +127,29 @@ const seed = async () => {
       {
         name: 'Avaveo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',xyC11C6gTKGg2qoiF4XQ',
+        yelpId: 'xyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Yacero',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',        dateVisited: new Date().toString(),
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
+        dateVisited: new Date().toString(),
         userId: 2
       },
       {
         name: 'Fadeo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',        dateVisited: new Date().toString(),
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
         name: 'Jayo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',        dateVisited: new Date().toString(),
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
+        dateVisited: new Date().toString(),
         userId: 1
       },
       {
