@@ -11,7 +11,7 @@ router.get('/recent', async (req, res, next) => {
   try {
     const places = await Place.findAll({
       where: {
-        userId: req.user.userId
+        userId: req.user.id
       }
     })
     res.json(places)
@@ -98,7 +98,7 @@ router.get('/recent/:id', async (req, res, next) => {
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
   console.log('THE REQ USER: ', req.user)
-  const userId = req.user.userId
+  const userId = req.user.id
   const { name, image_url, id } = req.body
   const date = new Date()
   const dateVisited = date.toString()
