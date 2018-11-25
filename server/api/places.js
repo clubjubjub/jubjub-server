@@ -57,6 +57,7 @@ router.get('/recent', async (req, res, next) => {
 // })
 
 router.get('/nearby/:lat/:lng', async (req, res, next) => {
+  console.log('THIS IS THE REQ.USER', req.user)
   try {
     const { data } = await axios.get(
       `https://api.yelp.com/v3/businesses/search?latitude=${
