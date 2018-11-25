@@ -127,7 +127,7 @@ const seed = async () => {
       {
         name: 'Avaveo',
         imageUrl: 'https://picsum.photos/150/150',
-        yelpId: 'xyC11C6gTKGg2qoiF4XQ',
+        yelpId: '7YxyC11C6gTKGg2qoiF4XQ',
         dateVisited: new Date().toString(),
         userId: 2
       },
