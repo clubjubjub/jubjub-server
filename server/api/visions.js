@@ -45,6 +45,7 @@ router.post('/', async (req, res, next) => {
       result: ${result}
       resultStringify: ${JSON.stringify(result)}
       text: ${text}
+      text: ${JSON.stringify(text)}
 
     `)
 
