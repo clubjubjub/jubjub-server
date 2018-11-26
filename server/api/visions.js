@@ -32,19 +32,31 @@ router.post('/', async (req, res, next) => {
 
     // const [result] = await Promise.all([client.documentTextDetection])
 
-    const request = {
-      image: {
-        source: {
-          imageUri: filename
-        }
-      },
-      features: [
-        {
-          type: 'DOCUMENT_TEXT_DETECTION',
-          maxResults: 1
-        }
-      ]
-    }
+    client
+      .labelDetection(filename)
+      .then(results => {
+        const labels = results[0].labelAnnotations
+
+        console.log('Labels:')
+        labels.forEach(label => console.log(label.description))
+      })
+      .catch(err => {
+        console.error('ERROR:', err)
+      })
+
+    // const request = {
+    //   image: {
+    //     source: {
+    //       imageUri: filename
+    //     }
+    //   },
+    //   features: [
+    //     {
+    //       type: 'DOCUMENT_TEXT_DETECTION',
+    //       maxResults: 1
+    //     }
+    //   ]
+    // }
     // const res1 = await client.annotateImage(request).then(visionRes => {
     //   console.log(JSON.stringify(visionRes))
     // })
@@ -61,33 +73,33 @@ router.post('/', async (req, res, next) => {
     //   text: ${JSON.stringify(text)}
 
     // `)
-    client
-      .documentTextDetection(filename)
-      .then(results => {
-        const fullTextAnnotation = results[0].fullTextAnnotation
-        console.log(`Full text: ${fullTextAnnotation.text}`)
+    // client
+    //   .documentTextDetection(filename)
+    //   .then(results => {
+    //     const fullTextAnnotation = results[0].fullTextAnnotation
+    //     console.log(`Full text: ${fullTextAnnotation.text}`)
 
-        fullTextAnnotation.pages.forEach(page => {
-          page.blocks.forEach(block => {
-            console.log(`Block confidence: ${block.confidence}`)
-            block.paragraphs.forEach(paragraph => {
-              console.log(`Paragraph confidence: ${paragraph.confidence}`)
-              paragraph.words.forEach(word => {
-                const wordText = word.symbols.map(s => s.text).join('')
-                console.log(`Word text: ${wordText}`)
-                console.log(`Word confidence: ${word.confidence}`)
-                word.symbols.forEach(symbol => {
-                  console.log(`Symbol text: ${symbol.text}`)
-                  console.log(`Symbol confidence: ${symbol.confidence}`)
-                })
-              })
-            })
-          })
-        })
-      })
-      .catch(err => {
-        console.error('ERROR:', err)
-      })
+    //     fullTextAnnotation.pages.forEach(page => {
+    //       page.blocks.forEach(block => {
+    //         console.log(`Block confidence: ${block.confidence}`)
+    //         block.paragraphs.forEach(paragraph => {
+    //           console.log(`Paragraph confidence: ${paragraph.confidence}`)
+    //           paragraph.words.forEach(word => {
+    //             const wordText = word.symbols.map(s => s.text).join('')
+    //             console.log(`Word text: ${wordText}`)
+    //             console.log(`Word confidence: ${word.confidence}`)
+    //             word.symbols.forEach(symbol => {
+    //               console.log(`Symbol text: ${symbol.text}`)
+    //               console.log(`Symbol confidence: ${symbol.confidence}`)
+    //             })
+    //           })
+    //         })
+    //       })
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.error('ERROR:', err)
+    //   })
 
     // const result = await client.documentTextDetection(filename)
     // const fullTextAnnotation = result.fullTextAnnotation
