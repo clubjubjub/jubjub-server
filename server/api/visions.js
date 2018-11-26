@@ -63,7 +63,7 @@ router.post('/', async (req, res, next) => {
     // `)
 
     client
-      .textDetection(filename)
+      .textDetection(`${filename}`)
       .then(results => {
         const detections = results[0].textAnnotations
         console.log('Text:')
