@@ -20,7 +20,7 @@ router.post('/', async (req, res, next) => {
 
     const UPLOADS_DIR = path.join(__dirname, '..', '..', 'uploads')
     const DATE_NOW = Date.now()
-    const file = `${UPLOADS_DIR}/photo-${DATE_NOW}.png`
+    const file = `photo-${DATE_NOW}.png`
 
     await fs.writeFile(file, photo, err => {
       if (err) throw err
