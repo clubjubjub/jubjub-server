@@ -33,3 +33,47 @@ router.put('/email', async (req, res, next) => {
     next(err)
   }
 })
+
+//update user name
+router.put('/name', async (req, res, next) => {
+  const userId = req.user.id
+
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  console.log('this is the name -------------', firstName, lastName)
+  try {
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      firstName,
+      lastName
+    })
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//update user password
+router.put('/password', async (req, res, next) => {
+  const userId = req.user.id
+
+  const password = req.body.password
+  console.log('this is the pass -------------', password)
+  try {
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      password
+    })
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+})
