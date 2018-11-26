@@ -50,17 +50,28 @@ router.post('/', async (req, res, next) => {
     // })
     // res.json(res1)
 
-    const result = await client.documentTextDetection(filename)
-    const text = await result.json()
+    // const result = await client.documentTextDetection(filename)
+    // const text = await result.json()
     // responses[0].textAnnotations[0]
 
-    console.log(`
+    // console.log(`
 
-      result: ${result}
-      resultStringify: ${JSON.stringify(result)}
-      text: ${JSON.stringify(text)}
+    //   result: ${result}
+    //   resultStringify: ${JSON.stringify(result)}
+    //   text: ${JSON.stringify(text)}
 
-    `)
+    // `)
+
+    client
+      .textDetection(filename)
+      .then(results => {
+        const detections = results[0].textAnnotations
+        console.log('Text:')
+        detections.forEach(text => console.log(text))
+      })
+      .catch(err => {
+        console.error('ERROR:', err)
+      })
 
     // const result = await client.documentTextDetection(filename)
     // const fullTextAnnotation = result.fullTextAnnotation
