@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
     const DATE_NOW = Date.now()
     const file = `photo.png`
 
-    await fs.writeFile(file, photo, err => {
+    await fs.writeFile(file, photo, 'binary', err => {
       if (err) throw err
       console.log(`The file has been saved!`)
     })
@@ -38,7 +38,7 @@ router.post('/', async (req, res, next) => {
 
     const result = await client.documentTextDetection(filename)
     // const text = await result.json()
-    const text = result.textAnnotations[0]
+    const text = result[0].textAnnotations[0]
 
     console.log(`
 
