@@ -81,7 +81,6 @@ router.put('/password', async (req, res, next) => {
 //update user phone
 router.put('/phone', async (req, res, next) => {
   const userId = req.user.id
-  console.log('req.body', req.body)
   const phone = req.body.phone
   console.log('this is the phone -------------', phone)
   try {
