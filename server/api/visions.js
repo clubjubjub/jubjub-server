@@ -46,19 +46,19 @@ router.post('/', async (req, res, next) => {
       ]
     }
 
-    axios({
-      method: 'POST',
-      url: `https://vision.googleapis.com/v1/images:annotate?key=${
-        process.env.GOOGLE_VISION
-      }`,
-      data: JSON.stringify(body)
-    }).then(res =>
-      console.log(`
+    try {
+      const { data } = await axios.post(
+        `https://vision.googleapis.com/v1/images:annotate?key=${
+          process.env.GOOGLE_VISION
+        }`,
+        { body }
+      )
 
-      res: ${res}
-
-    `)
-    )
+      console.log('GOOGLE VISION INFORMATION', data)
+      res.json(data)
+    } catch (err) {
+      next(err)
+    }
 
     // axios({
     //   `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_VISION}`,
