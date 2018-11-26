@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 
 //update user email
 router.put('/email', async (req, res, next) => {
-  const userId = 1
+  const userId = req.user.id
 
   const email = req.body.email
   console.log('this is the email -------------', email)
