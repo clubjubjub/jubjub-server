@@ -18,6 +18,7 @@ router.put('/email', async (req, res, next) => {
   const userId = 1
 
   const email = req.body.email
+  console.log('this is the email -------------', email)
   try {
     const user = await User.findOne({
       where: {
