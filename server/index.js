@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
 const cors = require('cors')
-const fileUpload = require('express-fileupload')
+const helmet = require('helmet')
 const session = require('express-session')
 const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
@@ -28,9 +28,14 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
+// var os = require('os')
+// var networkInterfaces = os.networkInterfaces()
+// console.log('network interfaces', networkInterfaces)
+
 const createApp = () => {
-  app.use(cors())
   app.use(morgan('dev'))
+  app.use(cors())
+  app.use(helmet())
   app.use(express.json({ limit: '100mb' })) // limit for images
   app.use(express.urlencoded({ extended: true, limit: '100mb' }))
   app.use(compression())
@@ -48,20 +53,11 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  app.post('/upload', async (req, res, next) => {
-    console.log(`
-
-      Request received:
-
-    `)
-    console.log(req.body.photo)
-    res.send('image RECEIVEDDDDDDDDDDDDDDd')
-  })
-
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.use(express.static(path.join(__dirname, '..', 'uploads')))
 
   app.use((err, req, res, next) => {
     console.error(err.stack)
