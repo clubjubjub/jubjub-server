@@ -30,42 +30,57 @@ router.post('/', async (req, res, next) => {
     // const filename = `/uploads/photo-${DATE_NOW}.png`
     const filename = path.join(__dirname, '../../photo.png')
 
-    const body = {
-      requests: [
-        {
-          image: {
-            content: base64
-          },
-          features: [
-            {
-              type: 'DOCUMENT_TEXT_DETECTION',
-              maxResults: 1
-            }
-          ]
-        }
-      ]
-    }
+    const result = await client.documentTextDetection(filename)
+    // const text = await result.json()
+    const text = result[0].textAnnotations[0]
 
-    try {
-      const { data } = await axios.post(
-        `https://vision.googleapis.com/v1/images:annotate?key=${
-          process.env.GOOGLE_VISION
-        }`,
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-        }
-      )
+    console.log(`
 
-      console.log('GOOGLE VISION INFORMATION', data)
-      res.json(data)
-    } catch (err) {
-      next(err)
-    }
+      result: ${result}
+      resultStringify: ${JSON.stringify(result)}
+      text: ${JSON.stringify(text)}
+
+    `)
+
+    // const body = {
+    //   requests: [
+    //     {
+    //       image: {
+    //         content: base64
+    //       },
+    //       features: [
+    //         {
+    //           type: 'DOCUMENT_TEXT_DETECTION',
+    //           maxResults: 1
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // }
+
+    // try {
+    //   const { data } = await axios.post(
+    //     `https://vision.googleapis.com/v1/images:annotate?key=${
+    //       process.env.GOOGLE_VISION
+    //     }`,
+    //     {
+    //       image: {
+    //         content: base64
+    //       },
+    //       features: [
+    //         {
+    //           type: 'DOCUMENT_TEXT_DETECTION',
+    //           maxResults: 1
+    //         }
+    //       ]
+    //     }
+    //   )
+
+    //   console.log('GOOGLE VISION INFORMATION', data)
+    //   res.json(data)
+    // } catch (err) {
+    //   next(err)
+    // }
 
     // axios({
     //   `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_VISION}`,
@@ -116,17 +131,6 @@ router.post('/', async (req, res, next) => {
     // })
     // res.json(res1)
 
-    // const result = await client.documentTextDetection(filename)
-    // const text = await result.json()
-    // responses[0].textAnnotations[0]
-
-    // console.log(`
-
-    //   result: ${result}
-    //   resultStringify: ${JSON.stringify(result)}
-    //   text: ${JSON.stringify(text)}
-
-    // `)
     // client
     //   .documentTextDetection(filename)
     //   .then(results => {
