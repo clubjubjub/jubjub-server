@@ -24,7 +24,7 @@ router.put('/email', async (req, res, next) => {
         userId
       }
     })
-    const updated = user.update({
+    const updated = await user.update({
       email
     })
     res.json(updated)
