@@ -14,7 +14,7 @@ const visionConfig = {
 
 router.post('/', async (req, res, next) => {
   try {
-    // const client = new vision.ImageAnnotatorClient()
+    const client = new vision.ImageAnnotatorClient()
     const base64 = req.body.base64
     const photo = new Buffer.from(base64, 'base64').toString('binary')
 
@@ -27,54 +27,57 @@ router.post('/', async (req, res, next) => {
       console.log(`The file has been saved!`)
     })
 
-    const filename = `/uploads/photo-${DATE_NOW}.png`
+    // const filename = `/uploads/photo-${DATE_NOW}.png`
+    const filename = path.join(__dirname, '../../photo.png')
 
-    // const [result] = await client.documentTextDetection(filename)
+    // const [result] = await Promise.all([client.documentTextDetection])
+
+    const result = await client.documentTextDetection(filename)
     // const fullTextAnnotation = result.fullTextAnnotation
     // console.log(`Full text: ${fullTextAnnotation.text}`)
 
     // const matches = visionsReponse.responses[0].textAnnotations[0].description
 
-    // console.log(`
-
-    //   matches: ${filename}
-
-    // `)
-    const body = {
-      requests: [
-        {
-          image: {
-            content: base64
-          },
-          features: [
-            {
-              type: 'DOCUMENT_TEXT_DETECTION',
-              maxResults: 1
-            }
-          ]
-        }
-      ]
-    }
-
-    const response = await axios.post(
-      `https://vision.googleapis.com/v1/images:annotate?key=${
-        process.env.GOOGLE_VISION
-      }`,
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      }
-    )
-    // const parsed = await response.json()
     console.log(`
 
-      Response: ${response}
+      result: ${result}
 
     `)
+    // const body = {
+    //   requests: [
+    //     {
+    //       image: {
+    //         content: base64
+    //       },
+    //       features: [
+    //         {
+    //           type: 'DOCUMENT_TEXT_DETECTION',
+    //           maxResults: 1
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // }
+
+    // const response = await axios.post(
+    //   `https://vision.googleapis.com/v1/images:annotate?key=${
+    //     process.env.GOOGLE_VISION
+    //   }`,
+    //   {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(body)
+    //   }
+    // )
+    // // const parsed = await response.json()
+    // console.log(`
+
+    //   Response: ${response}
+
+    // `)
 
     // const fileName = `uploads/img-${DATE_NOW}.png`
 
@@ -92,7 +95,7 @@ router.post('/', async (req, res, next) => {
     // )
 
     // const imgpath = `${UPLOADS_DIR}/${DATE_NOW}-out.png`
-    res.json(response)
+    // res.json(response)
   } catch (err) {
     next(err)
   }
