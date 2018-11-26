@@ -17,11 +17,7 @@ router.get('/:id', async (req, res, next) => {
   console.log('inside user route')
   const id = req.params.id
   try {
-    const user = await User.findOne({
-      where: {
-        id
-      }
-    })
+    const user = await User.findById(id)
     console.log('this is the user', user)
     res.json(user)
   } catch (err) {
