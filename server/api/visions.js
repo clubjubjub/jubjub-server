@@ -30,6 +30,12 @@ router.post('/', async (req, res, next) => {
     // const filename = `/uploads/photo-${DATE_NOW}.png`
     const filename = path.join(__dirname, '../../photo.png')
 
+    console.log(`
+
+      filename: ${filename}
+
+    `)
+
     const result = await client.documentTextDetection(filename)
     // const text = await result.json()
     const text = result[0].textAnnotations[0]
