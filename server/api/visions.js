@@ -49,7 +49,7 @@ router.post('/', async (req, res, next) => {
 
     `)
 
-    res.send(text)
+    res.json(text)
     // const body = {
     //   requests: [
     //     {
