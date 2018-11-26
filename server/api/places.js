@@ -99,6 +99,8 @@ router.get('/recent/:id', async (req, res, next) => {
 router.post('/recent', async (req, res, next) => {
   const userId = req.user.id
   const { name, image_url, id } = req.body
+  const lat = req.body.coordinates.latitude
+  const lng = req.body.coordinates.longitude
   const date = new Date()
   const dateVisited = date.toString()
 
@@ -114,7 +116,9 @@ router.post('/recent', async (req, res, next) => {
 
     const [numberOfAffectedRows, affectedRows] = await Place.update(
       {
-        dateVisited
+        dateVisited,
+        lat,
+        lng
       },
       {
         where: { yelpId: id, userId },
