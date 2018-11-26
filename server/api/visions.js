@@ -62,7 +62,7 @@ router.post('/', async (req, res, next) => {
 
     // `)
     client
-      .documentTextDetection(fileName)
+      .documentTextDetection(filename)
       .then(results => {
         const fullTextAnnotation = results[0].fullTextAnnotation
         console.log(`Full text: ${fullTextAnnotation.text}`)
