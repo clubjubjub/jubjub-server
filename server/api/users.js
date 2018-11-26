@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 
 //update user email
 router.put('/email', async (req, res, next) => {
-  const userId = req.user.id
+  const userId = 1
   const email = req.body.email
   try {
     const user = await User.findOne({
