@@ -50,10 +50,11 @@ router.post('/', async (req, res, next) => {
     // })
     // res.json(res1)
 
-    const result = await client.documentTextDetection(filename)
+    const [result] = await client.documentTextDetection(filename)
     const fullTextAnnotation = result.fullTextAnnotation
     console.log(`
 
+      Result: ${result}
       Full text: ${fullTextAnnotation.text}
       Res: ${result.responses[0].textAnnotations[0]}
 
