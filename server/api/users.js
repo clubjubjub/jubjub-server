@@ -21,6 +21,7 @@ router.get('/:id', async (req, res, next) => {
     console.log('this is the user', user)
     res.json(user)
   } catch (err) {
+    console.log('err', err)
     next(err)
   }
 })
