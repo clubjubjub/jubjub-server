@@ -83,7 +83,7 @@ router.post('/', async (req, res, next) => {
 
     // `)
 
-    res.json(result)
+    // res.json(result)
 
     // const matches = visionsReponse.responses[0].textAnnotations[0].description
 
