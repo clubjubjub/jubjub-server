@@ -37,8 +37,8 @@ router.post('/', async (req, res, next) => {
     `)
 
     const result = await client.documentTextDetection(filename)
-    // const text = await result.json()
-    const text = result[0].textAnnotations[0]
+    const text = await result.json()
+    // const text = result[0].textAnnotations[0]
 
     console.log(`
 
