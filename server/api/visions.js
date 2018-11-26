@@ -32,17 +32,36 @@ router.post('/', async (req, res, next) => {
 
     // const [result] = await Promise.all([client.documentTextDetection])
 
-    const result = await client.documentTextDetection(filename)
+    const request = {
+      image: {
+        source: {
+          imageUri: filename
+        }
+      },
+      features: [
+        {
+          type: 'DOCUMENT_TEXT_DETECTION'
+        }
+      ]
+    }
+
+    const res1 = await client.annotateImage(request).then(visionRes => {
+      console.log(JSON.stringify(visionRes))
+    })
+
+    res.json(res1)
+
+    // const result = await client.documentTextDetection(filename)
     // const fullTextAnnotation = result.fullTextAnnotation
     // console.log(`Full text: ${fullTextAnnotation.text}`)
 
     // const matches = visionsReponse.responses[0].textAnnotations[0].description
 
-    console.log(`
+    // console.log(`
 
-      result: ${JSON.stringify(result)}
+    //   result: ${JSON.stringify(result)}
 
-    `)
+    // `)
     // const body = {
     //   requests: [
     //     {
