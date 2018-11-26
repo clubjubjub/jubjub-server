@@ -17,31 +17,36 @@ const seed = async () => {
       firstName: 'Loren',
       lastName: 'Mariquit',
       email: 'loren@loren.com',
-      password: '123'
+      password: '123',
+      phone: '1234567890'
     }),
     User.create({
       firstName: 'Tyler',
       lastName: 'Swartz',
       email: 'tyler@tyler.com',
-      password: '123'
+      password: '123',
+      phone: '1234567890'
     }),
     User.create({
       firstName: 'Augustine',
       lastName: 'McPharlain',
       email: 'amcpharlain0@skype.com',
-      password: 'MSxwZlJCF'
+      password: 'MSxwZlJCF',
+      phone: '1234567890'
     }),
     User.create({
       firstName: 'Sibilla',
       lastName: 'Bream',
       email: 'sbream1@wufoo.com',
-      password: 'S1sgs0WQ'
+      password: 'S1sgs0WQ',
+      phone: '1234567890'
     }),
     User.create({
       firstName: 'Cacilie',
       lastName: 'Wooffinden',
       email: 'cwooffinden2@hexun.com',
-      password: 'zndRTR'
+      password: 'zndRTR',
+      phone: '1234567890'
     }),
     User.create({
       firstName: 'Odette',
