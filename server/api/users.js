@@ -77,3 +77,24 @@ router.put('/password', async (req, res, next) => {
     next(err)
   }
 })
+
+//update user phone
+router.put('/phone', async (req, res, next) => {
+  const userId = req.user.id
+
+  const phone = req.body.phone
+  console.log('this is the phone -------------', phone)
+  try {
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      phone
+    })
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+})
