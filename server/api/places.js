@@ -8,8 +8,13 @@ module.exports = router
 
 //GET --> api/places/recent
 router.get('/recent', async (req, res, next) => {
+  const userId = req.user.id
   try {
-    const places = await Place.findAll()
+    const places = await Place.findAll({
+      where: {
+        userId
+      }
+    })
     res.json(places)
   } catch (err) {
     next(err)
@@ -57,7 +62,7 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
     const { data } = await axios.get(
       `https://api.yelp.com/v3/businesses/search?latitude=${
         req.params.lat
-      }&longitude=${req.params.lng}&sort_by=distance`,
+      }&longitude=${req.params.lng}&sort_by=distance&limit=40`,
       {
         headers: {
           Authorization: `Bearer ${yelpConfig.key}`
@@ -92,8 +97,7 @@ router.get('/recent/:id', async (req, res, next) => {
 
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
-  // console.log('THE REQ USER: ', req.user)
-  const userId = 1 //req.user
+  const userId = req.user.id
   const { name, image_url, id } = req.body
   const date = new Date()
   const dateVisited = date.toString()
