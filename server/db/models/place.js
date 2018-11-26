@@ -6,43 +6,15 @@ const Place = db.define('place', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  lat: {
-    type: Sequelize.TEXT,
-    allowNull: false
-  },
-  lng: {
-    type: Sequelize.TEXT,
-    allowNull: false
-  },
   imageUrl: {
     type: Sequelize.TEXT
   },
-  rating: {
-    type: Sequelize.DECIMAL
+  yelpId: {
+    type: Sequelize.TEXT,
+    allowNull: false
   },
-  phone: {
-    type: Sequelize.STRING
-  },
-  addressOne: {
+  dateVisited: {
     type: Sequelize.TEXT
-  },
-  addressTwo: {
-    type: Sequelize.TEXT
-  },
-  addressThree: {
-    type: Sequelize.TEXT
-  },
-  city: {
-    type: Sequelize.TEXT
-  },
-  state: {
-    type: Sequelize.TEXT
-  },
-  zipCode: {
-    type: Sequelize.TEXT
-  },
-  country: {
-    type: Sequelize.STRING
   }
 })
 

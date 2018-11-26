@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "jubjub-server-223016",
+  "private_key_id": "b5bfba4261e0339fc0eb8ee44ef63d551762f861",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCGs2+4TG1wZukN\nrHmq7UPLWbR5IulZlpWKHvZqWMRl9ORSa9jGCx/DJxwfbr0Ttnu6OPdEaYhcg0+H\n+PBeBWC7vgSsU4Q/gn11OJxIby9ovgeDWTiDg4xo4ZLWpSswjCFR61Z6FYoRUIl1\nfe/PbcOMIViQ18JMtigwN2gbKhO4VLNoeEy3Ae3PtCvAMQGWNQbRKJvnZjfZwSBL\nKZ/hiZsCl0UolSHy1oiKH974DRgv+GAkxTir9MykN7IjX8Cg9twTBemClbAhfHK4\nBRBnThnQKCxJOpyAw5XI3nnHrKOOqqSZV+3AY3xjwEeneLmsHG3OVstpaRPOIhCM\nOUCXhbq1AgMBAAECggEAB64GUhslaDGt2uY4/5pMcbUZGYj4he+Ucg4G3ZRXCjsW\no25bqxrqQi2iKFafeBbA4iKqUl+z8xZXe/ig97NVyw5v5MVUNmzBq2PBYU3ZhZ7D\n/eSh2Lmw0S//N7auCjQLGEkTIp3Ew+z0EVtPR2PKMNyb2JI8lTQTgYA/MsFI44r3\njNpVU+J6Ffo1ww5A/xbx6UR5Q0Oh+5zuEgaQC+FCuQhtU1HvImrZwNB502tsKc1B\nu7t8rM2AqZD2fF6xj36CyJPlaxnaHGaktGyIrraR0wHXmervTOAHvvXqlBUnMu/i\naEl3rCKkL7cUstlvGPuSs1qB7FuBv80Qzn7TEH771wKBgQC5+RMz3/DZwch1arww\nDUBE6vGenBWe7j2CZZ02Y21LLV04E5kELKamhB9dE9ozm9khQUhqWMy7sNLuZDNN\nHvvTgZHYS8bsylYNaAYu1hvwXsqWjs2a9SDuur8fsY9BuF3DBXf+puZUkHfF7Qbh\nH6qbrvB4ret9NTgayFVcox6afwKBgQC5a/orbTFZof30Y4Aen4kFKjAaDbG7d9Xa\nvVJx47Hej2+JEvrrofHMU+LMGTYJ7+90iQjsCi17LQn7HfMTeTS8pjwgWxEjT2zA\nbjpX6DDJ/58/WXFXeWNfScCPoS5R5s5qjuqFpolLbYXMPcaQ9Tlab1cpqvvRFis+\n7uhW93LIywKBgQCxMueeHPnTsrX7Uwkey/F5+Vbh5x0ewyguj/29Lf2cjQvue5Xo\nCVd9ABUWTe0yEYRREHAcjKH/EJva8/SBvkz6mdHKg2F2i9B0k7KYfABBB0EHNego\nhvqrHZswarHyT+ZfBV3xcTu0RbcqCw/r/41DK+wLQMRKGCRuOIZFb1OgpwKBgQCx\nPVKL8jtLF3p+AiJ0o0DBjBsgvFhY/2qPRYsqTGE4gdk2qMrrNAjCrKjNOYgbJZu5\nxEegAPaKmHnC7VTuF1zeuvQcZZBTNVeZ9YOVheAlJlBdqKyb1e+0JPaJFKQHK93B\no8zvZko0rINJwP8ujwl8tZMWxFci/NLnvEyg3LV+0wKBgCtXGLcX8I94i5TmmkA3\nohNBqGo8AviLwPnBzqeoHCnvtaFKIlco+N+vK7mPc8alhmNWiTYzlC/srpnWa4a8\noYlgFfdMYNxyG/Mp9PaYs7GmhGaZ1/D5+ceDB8o1gwOsr0KuH6CAzB4ogyjFuVBw\n+4xlIJwFoexe/jv6oNrc0x8J\n-----END PRIVATE KEY-----\n",
+  "client_email": "jubjub-server@jubjub-server-223016.iam.gserviceaccount.com",
+  "client_id": "105922190835140373948",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jubjub-server%40jubjub-server-223016.iam.gserviceaccount.com"
+}
