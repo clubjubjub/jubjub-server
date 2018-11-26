@@ -34,7 +34,7 @@ router.post('/', async (req, res, next) => {
       requests: [
         {
           image: {
-            content: filename
+            content: base64
           },
           features: [
             {
@@ -51,7 +51,14 @@ router.post('/', async (req, res, next) => {
         `https://vision.googleapis.com/v1/images:annotate?key=${
           process.env.GOOGLE_VISION
         }`,
-        { body }
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }
       )
 
       console.log('GOOGLE VISION INFORMATION', data)
