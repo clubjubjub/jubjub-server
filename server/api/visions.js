@@ -30,19 +30,66 @@ router.post('/', async (req, res, next) => {
     // const filename = `/uploads/photo-${DATE_NOW}.png`
     const filename = path.join(__dirname, '../../photo.png')
 
+    const body = {
+      requests: [
+        {
+          image: {
+            content: filename
+          },
+          features: [
+            {
+              type: 'DOCUMENT_TEXT_DETECTION',
+              maxResults: 1
+            }
+          ]
+        }
+      ]
+    }
+
+    axios({
+      method: 'POST',
+      url: `https://vision.googleapis.com/v1/images:annotate?key=${
+        process.env.GOOGLE_VISION
+      }`,
+      data: JSON.stringify(body)
+    }).then(res =>
+      console.log(`
+
+      res: ${res}
+
+    `)
+    )
+
+    // axios({
+    //   `https://vision.googleapis.com/v1/images:annotate?key=${process.env.GOOGLE_VISION}`,
+
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(body)
+    //   }
+    // )
+
+    // const parsed = await response.json()
+    // this.setState({
+    //   text: parsed.responses[0].textAnnotations[0].description
+    // })
+
     // const [result] = await Promise.all([client.documentTextDetection])
 
-    client
-      .labelDetection(filename)
-      .then(results => {
-        const labels = results[0].labelAnnotations
+    // client
+    //   .labelDetection(filename)
+    //   .then(results => {
+    //     const labels = results[0].labelAnnotations
 
-        console.log('Labels:')
-        labels.forEach(label => console.log(label.description))
-      })
-      .catch(err => {
-        console.error('ERROR:', err)
-      })
+    //     console.log('Labels:')
+    //     labels.forEach(label => console.log(label.description))
+    //   })
+    //   .catch(err => {
+    //     console.error('ERROR:', err)
+    //   })
 
     // const request = {
     //   image: {
