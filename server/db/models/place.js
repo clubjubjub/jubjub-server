@@ -17,12 +17,10 @@ const Place = db.define('place', {
     type: Sequelize.TEXT
   },
   lat: {
-    type: Sequelize.DECIMAL,
-    allowNull: false
+    type: Sequelize.DECIMAL
   },
   lng: {
-    type: Sequelize.DECIMAL,
-    allowNull: false
+    type: Sequelize.DECIMAL
   }
 })
 

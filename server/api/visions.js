@@ -10,10 +10,7 @@ router.post('/', async (req, res, next) => {
     const client = new vision.ImageAnnotatorClient()
     const base64 = req.body.base64
     const photo = new Buffer.from(base64, 'base64').toString('binary')
-
-    const UPLOADS_DIR = path.join(__dirname, '..', '..', 'uploads')
-    const DATE_NOW = Date.now()
-    const file = `photo.png`
+    const file = 'photo.png'
 
     await fs.writeFile(file, photo, 'binary', err => {
       if (err) throw err
@@ -21,19 +18,48 @@ router.post('/', async (req, res, next) => {
     })
 
     const filename = path.join(__dirname, '../../photo.png')
-    const result = await client.documentTextDetection(filename)
-    const text = result[0].textAnnotations[0].description
 
-    console.log(`
+    const [
+      logoDetectionResults,
+      documentTextDetectionResults
+    ] = await Promise.all([
+      client.logoDetection(filename),
+      client.documentTextDetection(filename)
+    ])
 
-      result: ${result}
-      resultStringify: ${JSON.stringify(result)}
-      text: ${text}
-      text: ${JSON.stringify(text)}
+    const logo = logoDetectionResults[0].logoAnnotations[0]
+    const text = documentTextDetectionResults[0].textAnnotations[0]
 
-    `)
+    if (logo && logo.description) {
+      console.log(`
 
-    res.json(text)
+        Yass to logo.
+
+        Logo result: ${JSON.stringify(logo)}
+
+        Logo result: ${JSON.stringify(logo.description)}
+
+      `)
+      res.json(logo.description)
+    } else if (text && text.description) {
+      console.log(`
+
+        Yass to text.
+
+        Text result: ${JSON.stringify(text)}
+
+        Text result: ${JSON.stringify(text.description)}
+
+      `)
+      res.json(text.description)
+    } else {
+      console.log(`
+
+        Failed for logo and text detection
+
+      `)
+      res.end()
+    }
   } catch (err) {
     next(err)
   }
