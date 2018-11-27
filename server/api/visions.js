@@ -30,6 +30,28 @@ router.post('/', async (req, res, next) => {
     const logo = logoDetectionResults[0].logoAnnotations[0]
     const text = documentTextDetectionResults[0].textAnnotations[0]
 
+    console.log(`
+
+    Yass to logo.
+
+    Logo w/o desc result: ${JSON.stringify(
+      logoDetectionResults[0].logoAnnotations[0]
+    )}
+
+    Logo result: ${JSON.stringify(
+      logoDetectionResults[0].logoAnnotations[0].description
+    )}
+
+    Text w/o desc result: ${JSON.stringify(
+      logo.documentTextDetectionResults[0].textAnnotations[0]
+    )}
+
+    Text result: ${JSON.stringify(
+      logo.documentTextDetectionResults[0].textAnnotations[0].description
+    )}
+
+  `)
+
     if (logo && logo.description) {
       console.log(`
 
