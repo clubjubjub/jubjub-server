@@ -46,7 +46,8 @@ router.put('/avatar', async (req, res, next) => {
     )
     const DATE_NOW = Date.now()
     // const file = `avatar-${DATE_NOW}.png`
-    const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
+    // const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
+    const file = `avatar.png`
 
     await fs.writeFile(file, photo, 'binary', err => {
       if (err) throw err
