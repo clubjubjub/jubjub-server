@@ -62,7 +62,7 @@ router.put('/avatar', async (req, res, next) => {
 
   `)
 
-    const filename = path.join(__dirname, '../../photo.png')
+    const filename = path.join(__dirname, '..', '..', file)
 
     const user = await User.findOne({
       where: {
