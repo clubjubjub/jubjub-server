@@ -2,7 +2,13 @@ const router = require('express').Router()
 const { User } = require('../db/models')
 const fs = require('fs')
 const path = require('path')
+const AWS = require('aws-sdk')
 module.exports = router
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+})
 
 router.get('/', async (req, res, next) => {
   try {
@@ -40,47 +46,61 @@ router.get('/:id', async (req, res, next) => {
 //update user profile image
 router.put('/avatar', async (req, res, next) => {
   try {
-    const userId = req.user.id
-    const base64 = req.body.base64
-    const photo = new Buffer.from(base64, 'base64').toString('binary')
+    const s3 = new AWS.S3()
+    const filePath = '../../photo.png'
 
-    const UPLOADS_DIR = path.join(
-      __dirname,
-      '..',
-      '..',
-      'server',
-      'uploads',
-      'avatars'
-    )
-    const DATE_NOW = Date.now()
-    // const file = `avatar-${DATE_NOW}.png`
-    // const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
-    const file = `avatar.png`
+    const params = {
+      Bucket: process.env.S3_BUCKET,
+      Body: fs.createReadStream(filePath),
+      Key: `folder/${Date.now()}_${path.basename(filePath)}`
+    }
 
-    await fs.writeFile(file, photo, 'binary', err => {
-      if (err) throw err
-      console.log(`The file has been saved!`)
+    s3.upload(params, function(err, data) {
+      if (err) console.log(`Error: ${err}`)
+      if (data) console.log(`Uploaded in: ${data.location}`)
     })
 
-    console.log(`
+    //   const userId = req.user.id
+    //   const base64 = req.body.base64
+    //   const photo = new Buffer.from(base64, 'base64').toString('binary')
 
-      File (location + name): ${file}
+    //   const UPLOADS_DIR = path.join(
+    //     __dirname,
+    //     '..',
+    //     '..',
+    //     'server',
+    //     'uploads',
+    //     'avatars'
+    //   )
+    //   const DATE_NOW = Date.now()
+    //   // const file = `avatar-${DATE_NOW}.png`
+    //   // const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
+    //   const file = `avatar.png`
 
-      Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
+    //   await fs.writeFile(file, photo, 'binary', err => {
+    //     if (err) throw err
+    //     console.log(`The file has been saved!`)
+    //   })
 
-  `)
+    //   console.log(`
 
-    const filename = path.join(__dirname, '..', '..', file)
+    //     File (location + name): ${file}
 
-    const user = await User.findOne({
-      where: {
-        id: userId
-      }
-    })
-    const updated = await user.update({
-      avatar: filename
-    })
-    res.json(updated)
+    //     Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
+
+    // `)
+
+    //   const filename = path.join(__dirname, '..', '..', file)
+
+    //   const user = await User.findOne({
+    //     where: {
+    //       id: userId
+    //     }
+    //   })
+    //   const updated = await user.update({
+    //     avatar: filename
+    //   })
+    //   res.json(updated)
   } catch (err) {
     next(err)
   }
