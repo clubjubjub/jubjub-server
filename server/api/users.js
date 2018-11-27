@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { User } = require('../db/models')
+const fs = require('fs')
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -31,14 +32,28 @@ router.get('/:id', async (req, res, next) => {
 router.put('/avatar', async (req, res, next) => {
   try {
     const userId = req.user.id
-    const avatar = req.body
+    const base64 = req.body.base64
+    const photo = new Buffer.from(base64, 'base64').toString('binary')
+
+    const UPLOADS_DIR = path.join(__dirname, '..', '..', 'uploads')
+    const DATE_NOW = Date.now()
+    const file = `uploads/avatars/${userId}-avatar-${DATE_NOW}.png`
+
+    await fs.writeFile(file, photo, 'binary', err => {
+      if (err) throw err
+      console.log(`The file has been saved!`)
+    })
+
     console.log(`
 
-    Req.body: ${req.body}
+    File (location + name): ${file}
 
-    Req.body: ${JSON.stringify(req.body)}
+    Req.body.base64: ${req.body.base64}
+
+    Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
 
   `)
+
     // const user = await User.findOne({
     //   where: {
     //     id: userId
