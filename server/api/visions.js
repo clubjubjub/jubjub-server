@@ -38,17 +38,10 @@ router.post('/', async (req, res, next) => {
       logoDetectionResults[0].logoAnnotations[0]
     )}
 
-    Logo result: ${JSON.stringify(
-      logoDetectionResults[0].logoAnnotations[0].description
-    )}
-
     Text w/o desc result: ${JSON.stringify(
       logo.documentTextDetectionResults[0].textAnnotations[0]
     )}
 
-    Text result: ${JSON.stringify(
-      logo.documentTextDetectionResults[0].textAnnotations[0].description
-    )}
 
   `)
 
