@@ -31,12 +31,12 @@ router.get('/:id', async (req, res, next) => {
 router.put('/avatar', async (req, res, next) => {
   try {
     const userId = req.user.id
-    const avatar = req.body.avatar
+    const avatar = req.body
     console.log(`
 
-    Avatar: ${avatar}
+    Req.body: ${req.body}
 
-    Avatar: ${JSON.stringify(avatar)}
+    Req.body: ${JSON.stringify(req.body)}
 
   `)
     // const user = await User.findOne({
