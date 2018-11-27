@@ -32,7 +32,12 @@ router.post('/', async (req, res, next) => {
 
     console.log(`
 
-    Yass to logo.
+    logoDetectionResults: ${JSON.stringify(logoDetectionResults)}
+
+    documentTextDetectionResults: ${JSON.stringify(
+      documentTextDetectionResults
+    )}
+
 
     Logo w/o desc result: ${JSON.stringify(
       logoDetectionResults[0].logoAnnotations[0]
@@ -73,7 +78,7 @@ router.post('/', async (req, res, next) => {
         Failed for logo and text detection
 
       `)
-      res.json('brrp')
+      res.json('')
     }
   } catch (err) {
     next(err)
