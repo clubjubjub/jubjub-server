@@ -99,8 +99,8 @@ router.get('/recent/:id', async (req, res, next) => {
 router.post('/recent', async (req, res, next) => {
   console.log(`
 
-  Req.user.id: ${req.user.id}
-  Req.body.id: ${req.body.id}
+  Req.user.id: ${req.user}
+  Req.body.id: ${JSON.stringify(req.user)}
 
   `)
   const userId = req.user.id
