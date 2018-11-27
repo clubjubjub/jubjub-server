@@ -78,7 +78,7 @@ router.post('/', async (req, res, next) => {
         Failed for logo and text detection
 
       `)
-      res.json('')
+      res.end()
     }
   } catch (err) {
     next(err)
