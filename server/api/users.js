@@ -56,23 +56,21 @@ router.put('/avatar', async (req, res, next) => {
 
     console.log(`
 
-    File (location + name): ${file}
+      File (location + name): ${file}
 
-    Req.body.base64: ${req.body.base64}
-
-    Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
+      Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
 
   `)
 
-    // const user = await User.findOne({
-    //   where: {
-    //     id: userId
-    //   }
-    // })
-    // const updated = await user.update({
-    //   avatar
-    // })
-    // res.json(updated)
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      avatar: file
+    })
+    res.json(updated)
   } catch (err) {
     next(err)
   }
