@@ -47,12 +47,12 @@ router.get('/:id', async (req, res, next) => {
 router.put('/avatar', async (req, res, next) => {
   try {
     const s3 = new AWS.S3()
-    const filePath = '../../photo.png'
+    const filePath = path.join(__dirname, '..', '..', 'photo.png')
 
     const params = {
       Bucket: process.env.S3_BUCKET,
       Body: fs.createReadStream(filePath),
-      Key: `folder/${Date.now()}_${path.basename(filePath)}`
+      Key: `folder/${Date.now()}_${filePath}`
     }
 
     s3.upload(params, function(err, data) {
