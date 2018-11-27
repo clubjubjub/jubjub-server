@@ -14,10 +14,10 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/:id', async (req, res, next) => {
-  console.log('inside user route')
-  const id = Number(req.params.id)
-  console.log(id, typeof id)
   try {
+    console.log('inside user route')
+    const id = Number(req.params.id)
+    console.log(id, typeof id)
     const user = await User.findById(id)
     console.log('this is the user', user)
     res.json(user)
@@ -29,11 +29,11 @@ router.get('/:id', async (req, res, next) => {
 
 //update user email
 router.put('/email', async (req, res, next) => {
-  const userId = req.user.id
-
-  const email = req.body.email
-  console.log('this is the email -------------', email)
   try {
+    const userId = req.user.id
+
+    const email = req.body.email
+    console.log('this is the email -------------', email)
     const user = await User.findOne({
       where: {
         id: userId
@@ -50,12 +50,12 @@ router.put('/email', async (req, res, next) => {
 
 //update user name
 router.put('/name', async (req, res, next) => {
-  const userId = req.user.id
-
-  const firstName = req.body.firstName
-  const lastName = req.body.lastName
-  console.log('this is the name -------------', firstName, lastName)
   try {
+    const userId = req.user.id
+
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    console.log('this is the name -------------', firstName, lastName)
     const user = await User.findOne({
       where: {
         id: userId
@@ -73,11 +73,10 @@ router.put('/name', async (req, res, next) => {
 
 //update user password
 router.put('/password', async (req, res, next) => {
-  const userId = req.user.id
-
-  const password = req.body.password
-  console.log('this is the pass -------------', password)
   try {
+    const userId = req.user.id
+    const password = req.body.password
+    console.log('this is the pass -------------', password)
     const user = await User.findOne({
       where: {
         id: userId
@@ -94,10 +93,10 @@ router.put('/password', async (req, res, next) => {
 
 //update user phone
 router.put('/phone', async (req, res, next) => {
-  const userId = req.user.id
-  const phone = req.body.phone
-  console.log('this is the phone -------------', phone)
   try {
+    const userId = req.user.id
+    const phone = req.body.phone
+    console.log('this is the phone -------------', phone)
     const user = await User.findOne({
       where: {
         id: userId

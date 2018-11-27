@@ -28,9 +28,9 @@ passport.deserializeUser(async (id, done) => {
   }
 })
 
-// var os = require('os')
-// var networkInterfaces = os.networkInterfaces()
-// console.log('network interfaces', networkInterfaces)
+var os = require('os')
+var networkInterfaces = os.networkInterfaces()
+console.log('network interfaces', networkInterfaces)
 
 const createApp = () => {
   app.use(morgan('dev'))
