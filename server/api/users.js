@@ -36,8 +36,16 @@ router.put('/avatar', async (req, res, next) => {
     const base64 = req.body.base64
     const photo = new Buffer.from(base64, 'base64').toString('binary')
 
-    const UPLOADS_DIR = path.join(__dirname, '..', '..', 'uploads', 'avatars')
+    const UPLOADS_DIR = path.join(
+      __dirname,
+      '..',
+      '..',
+      'server',
+      'uploads',
+      'avatars'
+    )
     const DATE_NOW = Date.now()
+    // const file = `avatar-${DATE_NOW}.png`
     const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
 
     await fs.writeFile(file, photo, 'binary', err => {
