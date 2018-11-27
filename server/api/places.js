@@ -8,8 +8,8 @@ module.exports = router
 
 //GET --> api/places/recent
 router.get('/recent', async (req, res, next) => {
-  const userId = req.user.id
   try {
+    const userId = req.user.id
     const places = await Place.findAll({
       where: {
         userId
@@ -97,20 +97,21 @@ router.get('/recent/:id', async (req, res, next) => {
 
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
-  console.log(`
-
-  Req.user.id: ${req.user}
-  Req.body.id: ${JSON.stringify(req.user)}
-
-  `)
-  const userId = req.user.id
-  const { name, image_url, id } = req.body
-  const lat = req.body.coordinates.latitude
-  const lng = req.body.coordinates.longitude
-  const date = new Date()
-  const dateVisited = date.toString()
-
   try {
+    console.log(`
+
+      Req.user.id: ${req.user}
+      Req.body.id: ${JSON.stringify(req.user)}
+
+    `)
+
+    const userId = req.user.id
+    const { name, image_url, id } = req.body
+    const lat = req.body.coordinates.latitude
+    const lng = req.body.coordinates.longitude
+    const date = new Date()
+    const dateVisited = date.toString()
+
     await Place.findOrCreate({
       where: {
         userId,
