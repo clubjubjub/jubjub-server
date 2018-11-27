@@ -11,6 +11,9 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  avatar: {
+    type: Sequelize.TEXT
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,

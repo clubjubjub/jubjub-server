@@ -27,11 +27,36 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+//update user profile image
+router.put('/avatar', async (req, res, next) => {
+  try {
+    const userId = req.user.id
+    const avatar = req.body.avatar
+    console.log(`
+
+    Avatar: ${avatar}
+
+    Avatar: ${JSON.stringify(avatar)}
+
+  `)
+    // const user = await User.findOne({
+    //   where: {
+    //     id: userId
+    //   }
+    // })
+    // const updated = await user.update({
+    //   avatar
+    // })
+    // res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+})
+
 //update user email
 router.put('/email', async (req, res, next) => {
   try {
     const userId = req.user.id
-
     const email = req.body.email
     console.log('this is the email -------------', email)
     const user = await User.findOne({

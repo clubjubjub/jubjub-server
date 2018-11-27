@@ -100,8 +100,8 @@ router.post('/:id/recent', async (req, res, next) => {
   try {
     console.log(`
 
-      Req.user.id: ${req.params.id}
-      Req.body.id: ${JSON.stringify(req.user)}
+      Req.params.id: ${req.params.id}
+      Req.user: ${JSON.stringify(req.user)}
 
     `)
 
