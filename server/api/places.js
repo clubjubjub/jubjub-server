@@ -7,11 +7,11 @@ const yelpConfig = {
 module.exports = router
 
 //GET --> api/places/recent
-router.get('/recent', async (req, res, next) => {
+router.get('/:id/recent', async (req, res, next) => {
   try {
     console.log('this is the user', req.user)
     console.log('this is the userId', req.user.id)
-    const userId = req.user.id
+    const userId = req.params.id
     const places = await Place.findAll({
       where: {
         userId
