@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
     )}
 
     Text w/o desc result: ${JSON.stringify(
-      logo.documentTextDetectionResults[0].textAnnotations[0]
+      documentTextDetectionResults[0].textAnnotations[0]
     )}
 
 
