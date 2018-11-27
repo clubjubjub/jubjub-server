@@ -30,6 +30,26 @@ router.post('/', async (req, res, next) => {
     const logo = logoDetectionResults[0].logoAnnotations[0]
     const text = documentTextDetectionResults[0].textAnnotations[0]
 
+    console.log(`
+
+    logoDetectionResults: ${JSON.stringify(logoDetectionResults)}
+
+    documentTextDetectionResults: ${JSON.stringify(
+      documentTextDetectionResults
+    )}
+
+
+    Logo w/o desc result: ${JSON.stringify(
+      logoDetectionResults[0].logoAnnotations[0]
+    )}
+
+    Text w/o desc result: ${JSON.stringify(
+      documentTextDetectionResults[0].textAnnotations[0]
+    )}
+
+
+  `)
+
     if (logo && logo.description) {
       console.log(`
 
@@ -58,7 +78,7 @@ router.post('/', async (req, res, next) => {
         Failed for logo and text detection
 
       `)
-      res.json('brrp')
+      res.end()
     }
   } catch (err) {
     next(err)
