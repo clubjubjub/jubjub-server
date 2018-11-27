@@ -97,6 +97,12 @@ router.get('/recent/:id', async (req, res, next) => {
 
 //POST --> api/places/recent
 router.post('/recent', async (req, res, next) => {
+  console.log(`
+
+  Req.user.id: ${req.user.id}
+  Req.body.id: ${req.body.id}
+
+  `)
   const userId = req.user.id
   const { name, image_url, id } = req.body
   const lat = req.body.coordinates.latitude
