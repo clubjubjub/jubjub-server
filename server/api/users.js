@@ -59,7 +59,7 @@ router.put('/avatar', async (req, res, next) => {
 
     s3.upload(params, function(err, data) {
       if (err) console.log(`Error: ${err}`)
-      if (data) console.log(`Uploaded in: ${data.location.slice(0, 25)}`)
+      if (data) console.log(`Uploaded in: ${data.location}`)
     })
 
     //   const userId = req.user.id
