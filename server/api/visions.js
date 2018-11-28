@@ -38,13 +38,20 @@ router.post('/', async (req, res, next) => {
     if (text && text.description) visionResults.text = text.description
     if (logo && logo.description) visionResults.logo = logo.description
 
+    let finalResult = ''
+
+    if (visionResults.text !== null) finalResult += visionResults.text
+    if (visionResults.logo !== null) finalResult += ` ${visionResults.logo}`
+
     console.log(`
 
-      visionResults: ${JSON.stringify(visionResults)}
+    visionResults: ${JSON.stringify(visionResults)}
+
+    finalResult: ${JSON.stringify(finalResult)}
 
     `)
 
-    res.json(visionResults)
+    res.json(finalResult)
   } catch (err) {
     next(err)
   }
