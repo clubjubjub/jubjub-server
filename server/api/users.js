@@ -55,13 +55,16 @@ router.put('/avatar', async (req, res, next) => {
       Key: `avatars/avatar_${Date.now()}.png`
     }
 
+    let avatarUri = ''
+
     s3.upload(params, function(err, data) {
       if (err) console.log(`Error: ${err}`)
       if (data) console.log(`Uploaded in: ${JSON.stringify(data)}`)
       if (data) console.log(`Uploaded in: ${data.Location}`)
+      avatarUri = data.Location
     })
 
-    //   const userId = req.user.id
+    const userId = req.user.id
     //   const base64 = req.body.base64
     //   const photo = new Buffer.from(base64, 'base64').toString('binary')
 
@@ -93,15 +96,15 @@ router.put('/avatar', async (req, res, next) => {
 
     //   const filename = path.join(__dirname, '..', '..', file)
 
-    //   const user = await User.findOne({
-    //     where: {
-    //       id: userId
-    //     }
-    //   })
-    //   const updated = await user.update({
-    //     avatar: filename
-    //   })
-    //   res.json(updated)
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      avatar: avatarUri
+    })
+    res.json(updated)
   } catch (err) {
     next(err)
   }
