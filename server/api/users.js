@@ -96,6 +96,12 @@ router.put('/avatar', async (req, res, next) => {
 
     //   const filename = path.join(__dirname, '..', '..', file)
 
+    console.log(`
+
+      AvatarURI: ${avatarUri}
+
+    `)
+
     const user = await User.findOne({
       where: {
         id: userId
