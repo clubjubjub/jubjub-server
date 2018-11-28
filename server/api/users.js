@@ -74,8 +74,6 @@ router.put('/avatar', async (req, res, next) => {
     })
 
     const avatarUri = `https://identifi-jubjub.s3.amazonaws.com/avatars/avatar_${DATE_NOW}.png`
-    // const avatarUri = `https://clubjubjub.s3.amazonaws.com/avatars/avatar_${DATE_NOW}.png`
-    // https://identifi-jubjub.s3.amazonaws.com/avatars/avatar_1543428303315.png
     console.log(`
 
       AvatarURI: ${avatarUri}
@@ -90,37 +88,8 @@ router.put('/avatar', async (req, res, next) => {
     const updated = await user.update({
       avatar: avatarUri
     })
+
     res.json(updated)
-    //   const base64 = req.body.base64
-    //   const photo = new Buffer.from(base64, 'base64').toString('binary')
-
-    //   const UPLOADS_DIR = path.join(
-    //     __dirname,
-    //     '..',
-    //     '..',
-    //     'server',
-    //     'uploads',
-    //     'avatars'
-    //   )
-    //   const DATE_NOW = Date.now()
-    //   // const file = `avatar-${DATE_NOW}.png`
-    //   // const file = `${UPLOADS_DIR}/${userId}-avatar-${DATE_NOW}.png`
-    //   const file = `avatar.png`
-
-    //   await fs.writeFile(file, photo, 'binary', err => {
-    //     if (err) throw err
-    //     console.log(`The file has been saved!`)
-    //   })
-
-    //   console.log(`
-
-    //     File (location + name): ${file}
-
-    //     Req.body.base64: ${JSON.stringify(req.body.base64).slice(0, 20)}
-
-    // `)
-
-    //   const filename = path.join(__dirname, '..', '..', file)
   } catch (err) {
     next(err)
   }
