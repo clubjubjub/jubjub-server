@@ -36,5 +36,8 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.41.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "11.2.0"
+  }
 }
