@@ -1,4 +1,4 @@
-const { User, Place } = require('./server/db/models')
+const { User, Place, Style } = require('./server/db/models')
 const db = require('./server/db/db')
 const { green, red } = require('chalk')
 
@@ -90,6 +90,76 @@ const seed = async () => {
       email: 'kdomegan9@homestead.com',
       password: 'puL1ofuYO'
     })
+  ])
+
+  const styles = await Promise.all([
+    Style.bulkCreate([
+      {
+        darkMode: true,
+        primary: '#70fd56',
+        userId: 1
+      },
+      {
+        darkMode: false,
+        primary: '#31edae',
+        userId: 2
+      },
+      {
+        darkMode: false,
+        primary: '#10d645',
+        userId: 3
+      },
+      {
+        darkMode: true,
+        primary: '#47be5e',
+        userId: 4
+      },
+      {
+        darkMode: false,
+        primary: '#8e96e1',
+        userId: 5
+      },
+      {
+        darkMode: false,
+        primary: '#0ea26f',
+        userId: 6
+      },
+      {
+        darkMode: true,
+        primary: '#aaaed0',
+        userId: 7
+      },
+      {
+        darkMode: false,
+        primary: '#1848f7',
+        userId: 8
+      },
+      {
+        darkMode: false,
+        primary: '#c72dc1',
+        userId: 9
+      },
+      {
+        darkMode: false,
+        primary: '#ddd945',
+        userId: 10
+      },
+      {
+        darkMode: false,
+        primary: '#82665f',
+        userId: 11
+      },
+      {
+        darkMode: false,
+        primary: '#1017d4',
+        userId: 12
+      },
+      {
+        darkMode: false,
+        primary: '#2e1932',
+        userId: 13
+      }
+    ])
   ])
 
   const places = await Promise.all([

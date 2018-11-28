@@ -88,7 +88,10 @@ router.put('/avatar', async (req, res, next) => {
     const updated = await user.update({
       avatar: avatarUri
     })
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc457663c5eb1752ee9f314b2ba3197c12838d78
     res.json(updated)
   } catch (err) {
     next(err)
