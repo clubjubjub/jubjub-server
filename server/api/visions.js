@@ -31,8 +31,8 @@ router.post('/', async (req, res, next) => {
     const text = documentTextDetectionResults[0].textAnnotations[0]
 
     let visionResults = {
-      text: '',
-      logo: ''
+      text: null,
+      logo: null
     }
 
     if (text && text.description) visionResults.text = text.description
@@ -40,7 +40,7 @@ router.post('/', async (req, res, next) => {
 
     console.log(`
 
-      visionResults: ${visionResults}
+      visionResults: ${JSON.stringify(visionResults)}
 
     `)
 
