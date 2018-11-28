@@ -69,7 +69,7 @@ router.get('/nearby/:lat/:lng', async (req, res, next) => {
         }
       }
     )
-    console.log('THIS IS THE YELP DATA', data)
+    // console.log('THIS IS THE YELP DATA', data)
     res.json(data)
   } catch (err) {
     next(err)
@@ -88,7 +88,7 @@ router.get('/recent/:id', async (req, res, next) => {
       }
     )
 
-    console.log('YELP DATA for SINGLE BUSINESS', data)
+    // console.log('YELP DATA for SINGLE BUSINESS', data)
     res.json(data)
   } catch (err) {
     next(err)
@@ -98,12 +98,12 @@ router.get('/recent/:id', async (req, res, next) => {
 //POST --> api/places/recent
 router.post('/:id/recent', async (req, res, next) => {
   try {
-    console.log(`
+    // console.log(`
 
-      Req.params.id: ${req.params.id}
-      Req.user: ${JSON.stringify(req.user)}
+    //   Req.params.id: ${req.params.id}
+    //   Req.user: ${JSON.stringify(req.user)}
 
-    `)
+    // `)
 
     const userId = req.params.id
     const { name, image_url, id } = req.body
