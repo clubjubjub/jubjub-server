@@ -47,24 +47,39 @@ router.get('/:id', async (req, res, next) => {
 router.put('/avatar', async (req, res, next) => {
   try {
     const s3 = new AWS.S3()
+    const userId = req.user.id
+    const DATE_NOW = Date.now()
     const filePath = path.join(__dirname, '..', '..', 'photo.png')
 
     const params = {
       Bucket: process.env.S3_BUCKET,
       Body: fs.createReadStream(filePath),
-      Key: `avatars/avatar_${Date.now()}.png`
+      Key: `avatars/avatar_${DATE_NOW}.png`
     }
-
-    let avatarUri = ''
 
     s3.upload(params, function(err, data) {
       if (err) console.log(`Error: ${err}`)
       if (data) console.log(`Uploaded in: ${JSON.stringify(data)}`)
       if (data) console.log(`Uploaded in: ${data.Location}`)
-      avatarUri = data.Location
     })
 
-    const userId = req.user.id
+    const avatarUri = `https://clubjubjub.s3.amazonaws.com/avatars/avatar_${DATE_NOW}.png`
+
+    console.log(`
+
+      AvatarURI: ${avatarUri}
+
+    `)
+
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    })
+    const updated = await user.update({
+      avatar: avatarUri
+    })
+    res.json(updated)
     //   const base64 = req.body.base64
     //   const photo = new Buffer.from(base64, 'base64').toString('binary')
 
@@ -95,22 +110,6 @@ router.put('/avatar', async (req, res, next) => {
     // `)
 
     //   const filename = path.join(__dirname, '..', '..', file)
-
-    console.log(`
-
-      AvatarURI: ${avatarUri}
-
-    `)
-
-    const user = await User.findOne({
-      where: {
-        id: userId
-      }
-    })
-    const updated = await user.update({
-      avatar: avatarUri
-    })
-    res.json(updated)
   } catch (err) {
     next(err)
   }
