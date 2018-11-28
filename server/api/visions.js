@@ -41,7 +41,7 @@ router.post('/', async (req, res, next) => {
     let finalResult = ''
 
     if (visionResults.text !== null) finalResult += visionResults.text
-    if (visionResults.logo !== null) finalResult += ` ${visionResults.logo}`
+    if (visionResults.logo !== null) finalResult += visionResults.logo
 
     console.log(`
 
