@@ -48,18 +48,19 @@ router.post('/', async (req, res, next) => {
 
     `)
 
-    if (logo && logo.description) {
-      console.log(`
+    // if (logo && logo.description) {
+    //   console.log(`
 
-        Yass to logo.
+    //     Yass to logo.
 
-        Logo result: ${JSON.stringify(logo)}
+    //     Logo result: ${JSON.stringify(logo)}
 
-        Logo result: ${JSON.stringify(logo.description)}
+    //     Logo result: ${JSON.stringify(logo.description)}
 
-      `)
-      res.json(logo.description)
-    } else if (text && text.description) {
+    //   `)
+    //   res.json(logo.description)
+    // } else
+    if (text && text.description) {
       console.log(`
 
         Yass to text.
