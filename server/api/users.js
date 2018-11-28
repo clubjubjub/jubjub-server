@@ -63,7 +63,8 @@ router.put('/avatar', async (req, res, next) => {
       if (data) console.log(`Uploaded in: ${data.Location}`)
     })
 
-    const avatarUri = `https://clubjubjub.s3.amazonaws.com/avatars/avatar_${DATE_NOW}.png`
+    const avatarUri = `https://s3.us-east-2.amazonaws.com/identifi-jubjub/avatars/avatar_${DATE_NOW}.png`
+    // const avatarUri = `https://clubjubjub.s3.amazonaws.com/avatars/avatar_${DATE_NOW}.png`
 
     console.log(`
 
