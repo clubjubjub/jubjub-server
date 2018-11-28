@@ -17,17 +17,36 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.put('/primary/:id', async (req, res, next) => {
+router.put('/darkMode/:id', async (req, res, next) => {
   try {
     const userId = req.params.id
-    const primary = req.body.primary
+    const darkMode = req.body.darkMode
     const style = await Style.findOne({
       where: {
         userId
       }
     })
     const updated = await style.update({
-      primary
+      darkMode
+    })
+    res.json(updated)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/darkMode/:id', async (req, res, next) => {
+  try {
+    const userId = req.params.id
+    const darkMode = req.body.darkMode
+    console.log('this is darkMode status', darkMode)
+    const style = await Style.findOne({
+      where: {
+        userId
+      }
+    })
+    const updated = await style.update({
+      darkMode
     })
     res.json(updated)
   } catch (err) {
