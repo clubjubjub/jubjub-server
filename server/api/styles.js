@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Style } = require('../db/models')
+const { Style } = require('../db/models')
 module.exports = router
 
 router.get('/:id', async (req, res, next) => {
