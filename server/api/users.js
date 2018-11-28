@@ -20,7 +20,9 @@ router.get('/:id', async (req, res, next) => {
     console.log(id, typeof id)
     const user = await User.findById(id)
     console.log('this is the user', user)
+    //BREAKING CHANGE - DO NOT REMOVE!
     req.login(user, err => (err ? next(err) : res.json(user)))
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   } catch (err) {
     console.log('err', err)
     next(err)
