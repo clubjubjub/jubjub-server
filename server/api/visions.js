@@ -48,29 +48,28 @@ router.post('/', async (req, res, next) => {
 
     `)
 
-    // if (logo && logo.description) {
-    //   console.log(`
-
-    //     Yass to logo.
-
-    //     Logo result: ${JSON.stringify(logo)}
-
-    //     Logo result: ${JSON.stringify(logo.description)}
-
-    //   `)
-    //   res.json(logo.description)
-    // } else
     if (text && text.description) {
       console.log(`
 
-        Yass to text.
+      Yass to text.
 
-        Text result: ${JSON.stringify(text)}
+      Text result: ${JSON.stringify(text)}
 
-        Text result: ${JSON.stringify(text.description)}
+      Text result: ${JSON.stringify(text.description)}
+
+    `)
+      res.json(text.description)
+    } else if (logo && logo.description) {
+      console.log(`
+
+        Yass to logo.
+
+        Logo result: ${JSON.stringify(logo)}
+
+        Logo result: ${JSON.stringify(logo.description)}
 
       `)
-      res.json(text.description)
+      res.json(logo.description)
     } else {
       console.log(`
 
