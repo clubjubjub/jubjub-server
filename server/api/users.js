@@ -46,10 +46,19 @@ router.get('/:id', async (req, res, next) => {
 //update user profile image
 router.put('/avatar', async (req, res, next) => {
   try {
-    const s3 = new AWS.S3()
     const userId = req.user.id
+    const base64 = req.body.base64
+    const avatar = new Buffer.from(base64, 'base64').toString('binary')
+    const file = `avatar.png`
+
+    await fs.writeFile(file, avatar, 'binary', err => {
+      if (err) throw err
+      console.log(`The file has been saved!`)
+    })
+
+    const s3 = new AWS.S3()
     const DATE_NOW = Date.now()
-    const filePath = path.join(__dirname, '..', '..', 'photo.png')
+    const filePath = path.join(__dirname, '..', '..', 'avatar.png')
 
     const params = {
       Bucket: process.env.S3_BUCKET,
