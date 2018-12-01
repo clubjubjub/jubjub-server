@@ -30,54 +30,28 @@ router.post('/', async (req, res, next) => {
     const logo = logoDetectionResults[0].logoAnnotations[0]
     const text = documentTextDetectionResults[0].textAnnotations[0]
 
+    let visionResults = {
+      text: null,
+      logo: null
+    }
+
+    if (text && text.description) visionResults.text = text.description
+    if (logo && logo.description) visionResults.logo = logo.description
+
+    let finalResult = ''
+
+    if (visionResults.text !== null) finalResult += visionResults.text
+    if (visionResults.logo !== null) finalResult += visionResults.logo
+
     console.log(`
 
-      logoDetectionResults: ${JSON.stringify(logoDetectionResults)}
+    visionResults: ${JSON.stringify(visionResults)}
 
-      documentTextDetectionResults: ${JSON.stringify(
-        documentTextDetectionResults
-      )}
-
-      Logo w/o desc result: ${JSON.stringify(
-        logoDetectionResults[0].logoAnnotations[0]
-      )}
-
-      Text w/o desc result: ${JSON.stringify(
-        documentTextDetectionResults[0].textAnnotations[0]
-      )}
+    finalResult: ${JSON.stringify(finalResult)}
 
     `)
 
-    if (logo && logo.description) {
-      console.log(`
-
-        Yass to logo.
-
-        Logo result: ${JSON.stringify(logo)}
-
-        Logo result: ${JSON.stringify(logo.description)}
-
-      `)
-      res.json(logo.description)
-    } else if (text && text.description) {
-      console.log(`
-
-        Yass to text.
-
-        Text result: ${JSON.stringify(text)}
-
-        Text result: ${JSON.stringify(text.description)}
-
-      `)
-      res.json(text.description)
-    } else {
-      console.log(`
-
-        Failed for logo and text detection
-
-      `)
-      res.end()
-    }
+    res.json(finalResult)
   } catch (err) {
     next(err)
   }
